@@ -11,11 +11,13 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { RequestInterceptor } from './shared/interceptor/request.interceptor';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
-  ],
+    provideAnimations()
+],
 }).catch(err => console.error(err));
