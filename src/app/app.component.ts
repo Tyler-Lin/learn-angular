@@ -13,6 +13,5 @@ import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 })
 export class AppComponent {
   loadingSvc = inject(LoadingService);
-  title = 'learn-angular';
   loading$ = this.loadingSvc.loading$;
 }
