@@ -1,8 +1,9 @@
-<header class="p-2 flex gap-2 bg-slate-500">
-  <a routerLink="home" routerLinkActive="bg-red-500" class="p-2 rounded-sm"
-    >page1</a
-  >
-  <a routerLink="test" routerLinkActive="bg-red-500" class="p-2 rounded-sm"
-    >page2</a
+<header class="p-2 flex gap-2 bg-gray-400">
+  <a
+    *ngFor="let item of menuList"
+    [routerLink]="item.route"
+    class="p-2 rounded-[10px] border-gray-100 border-2"
+    routerLinkActive="border-gray-800"
+    ><button mat-raised-button color="primary">{{ item.name }}</button></a
   >
 </header>

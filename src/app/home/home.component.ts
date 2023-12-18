@@ -11,9 +11,16 @@ import { NewsService } from 'src/shared/service/news.service';
 })
 export class HomeComponent {
   newsSvc = inject(NewsService);
-  onGetNews() {
-    this.newsSvc.getNews().subscribe(data => {
-      console.log(data.articles[0]);
-    });
+
+  // 獲取新聞
+  // getNews() {
+  //   this.newsSvc.getNews().subscribe(data => {
+  //     console.log(data.articles);
+  //   });
+  // }
+
+  // 獲取當前日期
+  getTodayDate(): Date {
+    return new Date();
   }
 }
