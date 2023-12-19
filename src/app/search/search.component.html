@@ -1,0 +1,66 @@
+<form [formGroup]="form">
+  <div class="flex gap-2">
+    <mat-form-field>
+      <mat-label>請輸入關鍵字</mat-label>
+      <input formControlName="q" matInput placeholder="關鍵字" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>From</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="from" />
+      <mat-hint>YYYY/MM/DD</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>To</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="to" />
+      <mat-hint>YYYY/MM/DD</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker2"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>搜尋優先度</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option
+          *ngFor="let option of priorityOptions"
+          [value]="option['value']"
+        >
+          {{ option['viewValue'] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>
+
+<button class="border-2 p-2 rounded-lg border-blue-600" (click)="getNews()">
+  搜尋
+</button>
+
+<div>
+  <ng-container *ngIf="$newsData | async as newsData">
+    <div>
+      <p>status:{{ newsData.status }}</p>
+      <p>總筆數：{{ newsData.totalResults }}</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <div
+        class="border-2 rounded-md p-2 m-2 w-[calc(25%-24px)]"
+        *ngFor="let article of newsData.articles"
+      >
+        <p>author:{{ article.author }}</p>
+        <p>title:{{ article.title }}</p>
+        <p>content:{{ article.content }}</p>
+        <p>description:{{ article.description }}</p>
+        <p>publishedAt:{{ article.publishedAt | date }}</p>
+        <p>url:{{ article.url }}</p>
+        <img [src]="article.urlToImage" alt="" />
+      </div>
+    </div>
+  </ng-container>
+</div>

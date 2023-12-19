@@ -18,15 +18,20 @@ export class RequestInterceptor implements HttpInterceptor {
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
     this.loadingSvc.show();
-    const apiToken = 'b17f91abf1ff493b9510fe2b5d8713b6';
-    return next
-      .handle(
-        request.clone({
-          setHeaders: {
-            Authorization: `Bearer ${apiToken}`,
-          },
-        }),
-      )
-      .pipe(finalize(() => this.loadingSvc.hide()));
+    // 如果是呼叫 newsapi.org 的 API，就加上 Bearer Token
+    if (request.url.includes('newsapi.org')) {
+      const apiToken = 'b17f91abf1ff493b9510fe2b5d8713b6';
+      return next
+        .handle(
+          request.clone({
+            setHeaders: {
+              Authorization: `Bearer ${apiToken}`,
+            },
+          }),
+        )
+        .pipe(finalize(() => this.loadingSvc.hide()));
+    } else {
+      return next.handle(request).pipe(finalize(() => this.loadingSvc.hide()));
+    }
   }
 }

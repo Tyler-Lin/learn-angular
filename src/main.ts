@@ -18,6 +18,6 @@ bootstrapApplication(AppComponent, {
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
-    provideAnimations()
-],
+    provideAnimations(),
+  ],
 }).catch(err => console.error(err));

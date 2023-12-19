@@ -1,0 +1,7 @@
+<p>change-detection works!</p>
+
+<app-counter [data]="data">
+  <span #content>這裡是ng-content</span>
+</app-counter>
+<button appBtnStyle class="p-2 rounded-md" (click)="plus()">+1</button>
+{{ data | json }}

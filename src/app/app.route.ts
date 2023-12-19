@@ -10,13 +10,20 @@ export const appRoutes: Routes = [
       {
         path: 'home',
         loadComponent: () =>
-          import('./home/home.component').then(m => m.HomeComponent),
+          import('./home/home.component').then((m) => m.HomeComponent),
       },
-      // {
-      //   path: 'test',
-      //   loadComponent: () =>
-      //     import('./test/test.component').then(m => m.TestComponent),
-      // },
+      {
+        path: 'search',
+        loadComponent: () =>
+          import('./search/search.component').then((m) => m.SearchComponent),
+      },
+      {
+        path: 'change-detection',
+        loadComponent: () =>
+          import('./change-detection/change-detection.component').then(
+            (m) => m.ChangeDetectionComponent
+          ),
+      },
     ],
   },
   {
