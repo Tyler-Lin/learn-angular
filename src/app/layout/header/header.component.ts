@@ -20,5 +20,9 @@ export class HeaderComponent {
       name: 'Search',
       route: '/search',
     },
+    {
+      name: 'Change Detection',
+      route: '/change-detection',
+    },
   ];
 }

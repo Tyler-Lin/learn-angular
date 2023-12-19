@@ -10,7 +10,8 @@
       <mat-hint>YYYY/MM/DD</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
-        [for]="picker"></mat-datepicker-toggle>
+        [for]="picker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="example-full-width">
@@ -19,7 +20,8 @@
       <mat-hint>YYYY/MM/DD</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
-        [for]="picker2"></mat-datepicker-toggle>
+        [for]="picker2"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
@@ -27,7 +29,8 @@
       <mat-select formControlName="priority">
         <mat-option
           *ngFor="let option of priorityOptions"
-          [value]="option['value']">
+          [value]="option['value']"
+        >
           {{ option['viewValue'] }}
         </mat-option>
       </mat-select>
@@ -45,16 +48,19 @@
       <p>status:{{ newsData.status }}</p>
       <p>總筆數：{{ newsData.totalResults }}</p>
     </div>
-    <div
-      class="border-2 rounded-md p-2 m-2"
-      *ngFor="let article of newsData.articles">
-      <p>author:{{ article.author }}</p>
-      <p>title:{{ article.title }}</p>
-      <p>content:{{ article.content }}</p>
-      <p>description:{{ article.description }}</p>
-      <p>publishedAt:{{ article.publishedAt | date }}</p>
-      <p>url:{{ article.url }}</p>
-      <img [src]="article.urlToImage" alt="" />
+    <div class="flex flex-wrap gap-2">
+      <div
+        class="border-2 rounded-md p-2 m-2 w-[calc(25%-24px)]"
+        *ngFor="let article of newsData.articles"
+      >
+        <p>author:{{ article.author }}</p>
+        <p>title:{{ article.title }}</p>
+        <p>content:{{ article.content }}</p>
+        <p>description:{{ article.description }}</p>
+        <p>publishedAt:{{ article.publishedAt | date }}</p>
+        <p>url:{{ article.url }}</p>
+        <img [src]="article.urlToImage" alt="" />
+      </div>
     </div>
   </ng-container>
 </div>
