@@ -10,7 +10,7 @@ import {
   MatNativeDateModule,
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { NewsService } from 'src/shared/service/news.service';
 import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -88,7 +88,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   // 獲取新聞
   getNews() {
     const params = this.getFormValue();
-    this.subscription = this.newsSvc.getNews(params).subscribe(data => {
+    this.subscription = this.newsSvc.getNews(params).subscribe((data) => {
       this.newsDataSubject.next(data);
     });
   }

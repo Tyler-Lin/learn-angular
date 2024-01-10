@@ -24,5 +24,13 @@ export class HeaderComponent {
       name: 'Change Detection',
       route: '/change-detection',
     },
+    {
+      name: 'Car 1',
+      route: '/car1',
+    },
+    {
+      name: 'Car 2',
+      route: '/car2',
+    },
   ];
 }

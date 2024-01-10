@@ -24,6 +24,16 @@ export const appRoutes: Routes = [
             (m) => m.ChangeDetectionComponent
           ),
       },
+      {
+        path: 'car1',
+        loadComponent: () =>
+          import('./car1/car1.component').then((m) => m.Car1Component),
+      },
+      {
+        path: 'car2',
+        loadComponent: () =>
+          import('./car2/car2.component').then((m) => m.Car2Component),
+      },
     ],
   },
   {
