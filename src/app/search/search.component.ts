@@ -16,8 +16,17 @@ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
   MomentDateAdapter,
 } from '@angular/material-moment-adapter';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subscription,
+  filter,
+  skip,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { NewsData } from 'src/shared/model/news.model';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -43,6 +52,7 @@ const MY_DATE_FORMAT = {
     MatNativeDateModule,
     MatDatepickerModule,
     MatSelectModule,
+    RouterModule,
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
@@ -62,6 +72,7 @@ const MY_DATE_FORMAT = {
 export class SearchComponent implements OnInit, OnDestroy {
   fb = inject(FormBuilder);
   newsSvc = inject(NewsService);
+  route = inject(ActivatedRoute);
   form = this.fb.group({
     q: this.fb.nonNullable.control('bitcoin'),
     from: this.fb.nonNullable.control(''),
@@ -82,7 +93,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   private subscription!: Subscription;
   $test = new Observable();
   ngOnInit(): void {
-    this.getNews();
+    // this.getNews();
+    this.route.queryParams
+      .pipe(
+        filter((params) => Object.keys(params).length > 0), // Only proceed if there are query parameters
+        tap((param) => console.log(param)),
+        switchMap((params) => this.newsSvc.getTopHeadlinesByBusinness(params))
+      )
+      .subscribe((res) => this.newsDataSubject.next(res));
   }
 
   // 獲取新聞
@@ -94,7 +112,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   /** 將datepicker拿到的資料format */
