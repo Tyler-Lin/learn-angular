@@ -34,6 +34,13 @@ export const appRoutes: Routes = [
         loadComponent: () =>
           import('./car2/car2.component').then((m) => m.Car2Component),
       },
+      {
+        path: 'stop-watch',
+        loadComponent: () =>
+          import('./stop-watch/stop-watch.component').then(
+            (m) => m.StopWatchComponent
+          ),
+      },
     ],
   },
   {

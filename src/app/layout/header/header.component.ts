@@ -32,5 +32,9 @@ export class HeaderComponent {
       name: 'Car 2',
       route: '/car2',
     },
+    {
+      name: 'Stop-watch',
+      route: '/stop-watch',
+    },
   ];
 }
