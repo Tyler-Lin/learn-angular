@@ -41,6 +41,20 @@ export const appRoutes: Routes = [
             (m) => m.StopWatchComponent
           ),
       },
+      {
+        path: 'stop-watch-signals',
+        loadComponent: () =>
+          import('./stop-watch-signals/stop-watch-signals.component').then(
+            (m) => m.StopWatchSignalsComponent
+          ),
+      },
+      {
+        path: 'verhicles',
+        loadComponent: () =>
+          import('./verhicles/verhicles.component').then(
+            (m) => m.VerhiclesComponent
+          ),
+      },
     ],
   },
   {

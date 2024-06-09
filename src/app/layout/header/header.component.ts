@@ -36,5 +36,13 @@ export class HeaderComponent {
       name: 'Stop-watch',
       route: '/stop-watch',
     },
+    {
+      name: 'Stop-watch Signals',
+      route: '/stop-watch-signals',
+    },
+    {
+      name: 'verhicles',
+      route: '/verhicles',
+    },
   ];
 }
