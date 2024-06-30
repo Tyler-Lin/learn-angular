@@ -13,6 +13,13 @@ export const appRoutes: Routes = [
           import('./home/home.component').then((m) => m.HomeComponent),
       },
       {
+        path: 'learn-signal',
+        loadComponent: () =>
+          import('./learn-signal/learn-signal.component').then(
+            (m) => m.LearnSignalComponent
+          ),
+      },
+      {
         path: 'search',
         loadComponent: () =>
           import('./search/search.component').then((m) => m.SearchComponent),

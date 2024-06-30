@@ -1,2 +1,22 @@
 <p>home works!!!</p>
 <p>依賴注入練習</p>
+
+<div *appCustomStructural="true">
+  <p>這是結構型指令的另一種表示方式。</p>
+</div>
+
+<ng-template [appCustomStructural]="true">
+  <p>這是結構型指令</p>
+</ng-template>
+
+<ng-template>測試</ng-template>
+
+<div #container>container</div>
+
+<p appHoverTooltip [tooltipTemplate]="tooltipTemplate">123</p>
+
+<ng-template #tooltipTemplate>
+  <div class="tooltip">
+    This is the tooltip content. You can customize this however you like.
+  </div>
+</ng-template>
