@@ -42,6 +42,14 @@
   搜尋
 </button>
 
+<a
+  class="border-2 p-2 rounded-lg border-blue-600"
+  [routerLink]="['/search']"
+  routerLinkActive="router-link-active"
+  [queryParams]="{ country: 'us', category: 'business' }"
+  >paramMap testing</a
+>
+
 <div>
   <ng-container *ngIf="$newsData | async as newsData">
     <div>
